@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'poppins', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #e3f9ff;
+        }
+
+        .calculator {
+            width: 80%; /* Adjust the width as needed */
+            max-width: 400px; /* Set a maximum width for responsiveness */
+            margin: 0 auto;
+            padding: 20px 20px 60px 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #778899;
+            box-shadow: 0 0 10px 0 #000;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+            height: 40px;
+            margin-bottom: 10px;
+            padding: 5px;
+            text-align: right;
+            font-size: 20px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        input[type="button"] {
+            width: 23.6%;
+            height: 50px;
+            border: none;
+            box-sizing: border-box; 
+            margin-top: 8px;
+            padding: 10px;
+            font-size: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+        }
+
+        input[type="button"]:hover {
+            background-color: #efefef;
+            border: 2px solid #ffffff;
+            color: rgb(255, 0, 0);
+            cursor: pointer;
+        }
+        h2{
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 0px 0px 5px  #000;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <h2>Calculator</h2>
+            <input type="text" id="display" disabled title="Display"><br>
+            <input type="button" value="AC" onclick="display.value = ''">
+            <input type="button" value="←" onclick="display.value =  display.value.toString().slice(0, -1)">
+            <input type="button" value="%" onclick="display.value += '%'">
+            <input type="button" value="÷" onclick="display.value += '/'">
+            <input type="button" value="9" onclick="display.value += '9'">
+            <input type="button" value="8" onclick="display.value += '8'">
+            <input type="button" value="7" onclick="display.value += '7'">
+            <input type="button" value="*" onclick="display.value += '*'">
+            <input type="button" value="6" onclick="display.value += '6'">
+            <input type="button" value="5" onclick="display.value += '5'">
+            <input type="button" value="4" onclick="display.value += '4'">
+            <input type="button" value="-" onclick="display.value += '-'">
+            <input type="button" value="3" onclick="display.value += '3'">
+            <input type="button" value="2" onclick="display.value += '2'">
+            <input type="button" value="1" onclick="display.value += '1'">
+            <input type="button" value="+" onclick="display.value += '+'">
+            <input type="button" value="•" onclick="display.value +='.'">
+            <input type="button" value="0" onclick="display.value +='0'">
+            <input type="button" value="00" onclick="display.value += '00'">
+            <input type="button" value="=" onclick="calculateResult()">
+        </div>
+    </div>
+    <script>
+        function calculateResult() {
+            var inputExp = document.getElementById('display').value;
+            try {
+                var result = eval(inputExp);
+                document.getElementById('display').value = inputExp + '=' + result;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
